@@ -1,0 +1,99 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\bootstrap.css" />
+    <Content Remove="wwwroot\css\font-awesome.css" />
+    <Content Remove="wwwroot\css\style.css" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.eot" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.svg" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff" />
+    <Content Remove="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <Content Remove="wwwroot\fonts\FontAwesome.otf" />
+    <Content Remove="wwwroot\images\about.jpg" />
+    <Content Remove="wwwroot\images\admin.jpg" />
+    <Content Remove="wwwroot\images\banner.jpg" />
+    <Content Remove="wwwroot\images\helmet.jpg" />
+    <Content Remove="wwwroot\images\img1.jpg" />
+    <Content Remove="wwwroot\images\img2.jpg" />
+    <Content Remove="wwwroot\images\img3.jpg" />
+    <Content Remove="wwwroot\images\img4.jpg" />
+    <Content Remove="wwwroot\images\img5.jpg" />
+    <Content Remove="wwwroot\images\img6.jpg" />
+    <Content Remove="wwwroot\images\img7.jpg" />
+    <Content Remove="wwwroot\images\s1.jpg" />
+    <Content Remove="wwwroot\images\s10.jpg" />
+    <Content Remove="wwwroot\images\s11.jpg" />
+    <Content Remove="wwwroot\images\s12.jpg" />
+    <Content Remove="wwwroot\images\s2.jpg" />
+    <Content Remove="wwwroot\images\s3.jpg" />
+    <Content Remove="wwwroot\images\s4.jpg" />
+    <Content Remove="wwwroot\images\s5.jpg" />
+    <Content Remove="wwwroot\images\s6.jpg" />
+    <Content Remove="wwwroot\images\s7.jpg" />
+    <Content Remove="wwwroot\images\s8.jpg" />
+    <Content Remove="wwwroot\images\s9.jpg" />
+    <Content Remove="wwwroot\images\single.jpg" />
+    <Content Remove="wwwroot\images\te1.jpg" />
+    <Content Remove="wwwroot\images\te2.jpg" />
+    <Content Remove="wwwroot\images\te3.jpg" />
+    <Content Remove="wwwroot\images\team.jpg" />
+    <Content Remove="wwwroot\images\team1.jpg" />
+    <Content Remove="wwwroot\images\team2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\bootstrap.css" />
+    <None Include="wwwroot\css\font-awesome.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\images\about.jpg" />
+    <None Include="wwwroot\images\admin.jpg" />
+    <None Include="wwwroot\images\banner.jpg" />
+    <None Include="wwwroot\images\helmet.jpg" />
+    <None Include="wwwroot\images\img1.jpg" />
+    <None Include="wwwroot\images\img2.jpg" />
+    <None Include="wwwroot\images\img3.jpg" />
+    <None Include="wwwroot\images\img4.jpg" />
+    <None Include="wwwroot\images\img5.jpg" />
+    <None Include="wwwroot\images\img6.jpg" />
+    <None Include="wwwroot\images\img7.jpg" />
+    <None Include="wwwroot\images\s1.jpg" />
+    <None Include="wwwroot\images\s10.jpg" />
+    <None Include="wwwroot\images\s11.jpg" />
+    <None Include="wwwroot\images\s12.jpg" />
+    <None Include="wwwroot\images\s2.jpg" />
+    <None Include="wwwroot\images\s3.jpg" />
+    <None Include="wwwroot\images\s4.jpg" />
+    <None Include="wwwroot\images\s5.jpg" />
+    <None Include="wwwroot\images\s6.jpg" />
+    <None Include="wwwroot\images\s7.jpg" />
+    <None Include="wwwroot\images\s8.jpg" />
+    <None Include="wwwroot\images\s9.jpg" />
+    <None Include="wwwroot\images\single.jpg" />
+    <None Include="wwwroot\images\te1.jpg" />
+    <None Include="wwwroot\images\te2.jpg" />
+    <None Include="wwwroot\images\te3.jpg" />
+    <None Include="wwwroot\images\team.jpg" />
+    <None Include="wwwroot\images\team1.jpg" />
+    <None Include="wwwroot\images\team2.jpg" />
+  </ItemGroup>
+
+</Project>
