@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFKids", "SOF586Kids\SOFKids.csproj", "{B50B3E95-1B3B-4DD2-B470-54D10C8E0445}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOFSports", "SOF586Sports\SOFSports.csproj", "{CE48E071-1D71-44E2-84C9-A42AFB1A2984}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFSports", "SOF586Sports\SOFSports.csproj", "{CE48E071-1D71-44E2-84C9-A42AFB1A2984}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
