@@ -392,17 +392,31 @@ li > a:only-child:after {
     height: 50em;
 }
 
-.main-banner.inner {
-    background: url(../images/banner.jpg)no-repeat center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    background-size: cover;
+    .main-banner.inner {
+        background: url(../images/banner.jpg)no-repeat center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        background-size: cover;
+        position: relative;
+        height: 25em;
+        margin-bottom: 10px;
+    }
+    .SearchFilter { 
+        position: relative;
+        height: 25em;
+        margin-left: 10px;
+        
+    }
+.Searchtxt {
     position: relative;
-    height: 20em;
+    height: 25em;
+    margin-left: 500px;
+     height :2em;
+     width:50em;
 }
-
+ 
 /*-- place holder --*/
 
 .banner-form ::-webkit-input-placeholder {
@@ -987,7 +1001,22 @@ form.w3layouts-newsletter {
     border-radius: 0;
     padding: 0.7em 2em;
 }
-
+.SearchBtn {
+    color: #1e272e;
+    font-size: 17px;
+    letter-spacing: 1px; 
+    border: transparent;
+    text-transform: uppercase;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    transition: 0.5s all;
+    background: #bfd0dc;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0; 
+    width: 10em;
+    height: 2em; 
+}
 h2.logo-2 a {
     font-weight: 700;
     font-size: 34px;

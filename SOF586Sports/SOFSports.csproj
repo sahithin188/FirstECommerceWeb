@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
+    <Folder Include="wwwroot\Controllers\" />
   </ItemGroup>
 
 </Project>
