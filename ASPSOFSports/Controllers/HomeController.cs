@@ -22,7 +22,7 @@ namespace ASPSOFSports.Controllers
         }
         public IActionResult Shopping()
         {
-            List<Items> itemlist = new List<Items>(); 
+            List<Items> itemlist = new List<Items>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 //SqlDataReader
@@ -36,15 +36,16 @@ namespace ASPSOFSports.Controllers
                         Items Item = new Items();
                         Item.ItemsId = Convert.ToInt32(dataReader["ItemsId"]);
                         Item.Name = Convert.ToString(dataReader["Name"]);
-                        Item.Price = Convert.ToDecimal (dataReader["Price"]);
+                        Item.Price = Convert.ToDecimal(dataReader["Price"]);
                         Item.Description = Convert.ToString(dataReader["Description"]);
-                        
+
                         itemlist.Add(Item);
                     }
                 }
                 connection.Close();
             }
-            return View(itemlist); 
+            return View(itemlist);
+            //return View();
         }
 
         public IActionResult Cart()
@@ -73,7 +74,7 @@ namespace ASPSOFSports.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create_Post(Items Items)
+        public IActionResult Pay(Items Items)
         {
             if (ModelState.IsValid)
             { 
