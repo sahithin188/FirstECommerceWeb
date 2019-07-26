@@ -23,52 +23,28 @@ namespace ASPSOFSports.Controllers
             db_context = new SOF586SportsContext(Configuration);
         }
         public IActionResult Shopping()
-        {
-            //List<Items> itemlist = new List<Items>();
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    //SqlDataReader
-            //    connection.Open();
-
-            //    string sql = "Select * From Items "; SqlCommand command = new SqlCommand(sql, connection);
-            //    using (SqlDataReader dataReader = command.ExecuteReader())
-            //    {
-            //        while (dataReader.Read())
-            //        {
-            //            Items Item = new Items();
-            //            Item.ItemsId = Convert.ToInt32(dataReader["ItemsId"]);
-            //            Item.Name = Convert.ToString(dataReader["Name"]);
-            //            Item.Price = Convert.ToDecimal(dataReader["Price"]);
-            //            Item.Description = Convert.ToString(dataReader["Description"]);
-
-            //            itemlist.Add(Item);
-            //        }
-            //    }
-            //    connection.Close();
-            //}
-
-            //return View(itemlist);
+        { 
              return View(db_context.Items);
             //return View();
         }
 
         public IActionResult Cart()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Cart Items.";
 
-            return View();
+            return View(db_context.PurchaseHistory.Where(o=> o.IsPurchased==false && o.UserInfoId==1));
         }
 
         public IActionResult Payment()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Payment Details.";
 
-            return View();
+            return View(db_context.PaymentAddress.Where(o =>  o.UserInfoId == 1));
         }
 
         public IActionResult PurchaseHis()
         {
-            return View();
+            return View(db_context.PurchaseHistory.Where(o => o.IsPurchased == true && o.UserInfoId == 1));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -78,24 +54,14 @@ namespace ASPSOFSports.Controllers
         }
 
         [HttpPost]
-        public IActionResult Pay(Items Item)
+        public IActionResult Pay(PaymentAddress PayAddress)
         {
             if (ModelState.IsValid)
             {
-                db_context.Items.Add(Item);
-                db_context.SaveChanges();
-                //using (SqlConnection connection = new SqlConnection(connectionString))
-                //{
-                //    string sql = $"Insert Into Items (ItemsId, Name, Price, PurchaseHistory) Values ('{Items.ItemsId}', '{ Items.Name}','{Items.Price}','{Items.PurchaseHistory}')";
-                //    using (SqlCommand command = new SqlCommand(sql, connection))
-                //    {
-                //        command.CommandType = CommandType.Text;
-                //        connection.Open();
-                //        command.ExecuteNonQuery();
-                //        connection.Close();
-                //    }
-                    return RedirectToAction("Payment");
-                //}
+                db_context.PaymentAddress.Add(PayAddress);
+                db_context.PurchaseHistory.Where(o=>o.UserInfoId==1 && o.IsPurchased==false).FirstOrDefault().IsPurchased=true;
+                db_context.SaveChanges(); 
+                 return RedirectToAction("PurchaseHis"); 
             }
             else
                 return View();
@@ -103,29 +69,55 @@ namespace ASPSOFSports.Controllers
 
         public IActionResult AddtoCart(Items Items)
         {
-            PurchaseHistory ph = new PurchaseHistory();
-            ph.ItemsId = Items.ItemsId;
-            ph.UserInfoId = 1;
-            ph.Quantity = 1;
-            ph.IsPurchased = false;
+           
             if (ModelState.IsValid)
             {
-                //using (SqlConnection connection = new SqlConnection(connectionString))
-                //{
-                //    string sql = $"Insert Into PurchaseHistory (PurchaseHistoryId, ItemsId, UserInfoId, Quantity,IsPurchased) Values ('{Items.ItemsId}', '{ Items.Name}','{Items.Price}','{Items.PurchaseHistory}')";
-                //    using (SqlCommand command = new SqlCommand(sql, connection))
-                //    {
-                //        command.CommandType = CommandType.Text;
-                //        connection.Open();
-                //        command.ExecuteNonQuery();
-                //        connection.Close();
-                //    }
-                    return RedirectToAction("Payment");
-                //}
+                if (db_context.PurchaseHistory.Where(o => o.ItemsId == Items.ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).Count() == 0)
+                {
+                    PurchaseHistory ph = new PurchaseHistory();
+                    ph.ItemsId = Items.ItemsId;
+                    ph.UserInfoId = 1;
+                    ph.Quantity = 1;
+                    ph.IsPurchased = false;
+                    db_context.PurchaseHistory.Add(ph);
+                    db_context.SaveChanges();
+                }
+                else
+                {
+                    PurchaseHistory ph = db_context.PurchaseHistory.Where(o => o.ItemsId == Items.ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).FirstOrDefault() ;
+                     ph.Quantity = ph.Quantity+1;
+                    db_context.SaveChanges();
+                }
+
+                return RedirectToAction("Shopping");
+                
             }
             else
                 return View();
         }
-    }
+
+        public IActionResult DeleteFromCart(PurchaseHistory PhItems)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (db_context.PurchaseHistory.Where(o => o.PurchaseHistoryId == PhItems.PurchaseHistoryId && o.UserInfoId == 1 && o.IsPurchased == false).Count() != 0)
+                {
+                    PurchaseHistory ph = db_context.PurchaseHistory.Where(o => o.ItemsId == PhItems.ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).FirstOrDefault();
+                    db_context.PurchaseHistory.Remove(ph);
+                    db_context.SaveChanges();
+                }
+
+                return RedirectToAction("Cart");
+
+            }
+            else
+                return View();
+        }
+            public IActionResult NavigatetoPayment(PurchaseHistory PhItems)
+            {
+              return RedirectToAction("Payment");
+             }
+        }
 
 } 

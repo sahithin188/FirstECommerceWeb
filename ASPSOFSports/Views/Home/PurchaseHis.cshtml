@@ -1,17 +1,48 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Purchas History";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div>
+    @model IEnumerable<PurchaseHistory>
+    @{
+        Layout = "_Layout";
+        var title = "READ Items";
+        ViewData["Title"] = title;
+    }
+    <h2>@title</h2>
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>PurchaseHistoryId</th>
+                <th>ItemsName</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No Model Data</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var p in Model)
+                {
+        <tr>
+            <td>@p.PurchaseHistoryId</td>
+            <td>@p.Items.Name</td>
+            <td>@p.Items.Price</td>
+            <td>@p.Items.Description</td>
+            <td>@p.Quantity</td> 
+        </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+ 
