@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Payment Details";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    @model Items
+    @{
+        Layout = "_Layout";
+        var title = "Add Payment Details ";
+        ViewData["Title"] = title;
+    }
+    <style>
+        .input-validation-error {
+            border-color: red;
+        }
+    </style>
+    <h2>@title</h2>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form class="m-1 p-1" method="post">
+        <div class="form-group">
+            <label asp-for="ItemsId"></label>
+            <input asp-for="ItemsId" type="text" class="form-control" />
+            <span asp-validation-for="ItemsId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" type="text" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" type="text" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Pay</button>
+
+    </form>
+</div>

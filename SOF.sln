@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFKids", "SOF586Kids\SOFKi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFSports", "SOF586Sports\SOFSports.csproj", "{CE48E071-1D71-44E2-84C9-A42AFB1A2984}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPSOFSports", "ASPSOFSports\ASPSOFSports.csproj", "{D26A1B64-7B11-47B8-AD7C-A23948FACE42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPSOFSports", "ASPSOFSports\ASPSOFSports.csproj", "{D26A1B64-7B11-47B8-AD7C-A23948FACE42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,13 +1,16 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace ASPSOFSports.Models
 {
     public partial class SOF586SportsContext : DbContext
     {
-        public SOF586SportsContext()
+        public IConfiguration Configuration;
+        public SOF586SportsContext(IConfiguration configuration)
         {
+            Configuration = configuration;
         }
 
         public SOF586SportsContext(DbContextOptions<SOF586SportsContext> options)
@@ -23,9 +26,8 @@ namespace ASPSOFSports.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=sof586jasona.database.windows.net,1433;Initial Catalog=SOF586Sports;Persist Security Info=False;User ID=jasonascalon;Password=Sof586jasona;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=100;");
+            { 
+   optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SOFSports"));
             }
         }
 
