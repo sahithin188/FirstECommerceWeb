@@ -87,7 +87,7 @@ namespace ASPSOFSports.Controllers
                         command.ExecuteNonQuery();
                         connection.Close();
                     }
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Payment");
                 }
             }
             else
