@@ -8,6 +8,7 @@ using ASPSOFSports.Models;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASPSOFSports.Controllers
 {
@@ -32,7 +33,7 @@ namespace ASPSOFSports.Controllers
         {
             ViewData["Message"] = "Cart Items.";
 
-            return View(db_context.PurchaseHistory.Where(o=> o.IsPurchased==false && o.UserInfoId==1));
+            return View(db_context.PurchaseHistory.Include("Items").Where(o=> o.IsPurchased==false && o.UserInfoId==1) );
         }
 
         public IActionResult Payment()
@@ -44,7 +45,7 @@ namespace ASPSOFSports.Controllers
 
         public IActionResult PurchaseHis()
         {
-            return View(db_context.PurchaseHistory.Where(o => o.IsPurchased == true && o.UserInfoId == 1));
+            return View(db_context.PurchaseHistory.Include("Items").Where(o => o.IsPurchased == true && o.UserInfoId == 1));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

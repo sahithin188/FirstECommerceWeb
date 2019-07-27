@@ -32,14 +32,14 @@
             else
             {
                 @foreach (var p in Model)
-                {
+                { 
         <tr>
             <td>@p.PurchaseHistoryId</td>
             <td>@p.Items.Name</td>
             <td>@p.Items.Price</td>
             <td>@p.Items.Description</td>
             <td>@p.Quantity</td>
-            <td><a asp-action="DeletefromCart" asp-route-id="@p.PurchaseHistoryId">Delete From Cart</a></td>
+            <td><a asp-action="DeletefromCart" asp-route-PurchaseHistoryId="@p.PurchaseHistoryId">Delete From Cart</a></td>
             @*<td>
             <form asp-action="Delete" method="post" asp-route-id="@p.ItemsId">
                 <button>Delete</button>
