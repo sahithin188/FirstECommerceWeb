@@ -4,49 +4,52 @@
 <h2>@ViewData["Title"]</h2>
 
 <div>
-    @model PaymentAddress
+    @model IEnumerable<PaymentAddress>
     @{
         Layout = "_Layout";
-        var title = "Add Payment Details ";
+        var title = "User Payment Addressess";
         ViewData["Title"] = title;
     }
-    <style>
-        .input-validation-error {
-            border-color: red;
-        }
-    </style>
     <h2>@title</h2>
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <form class="m-1 p-1" method="post">
-         <div class="form-group">
-            <label asp-for="Street"></label>
-            <input asp-for="Street" type="text"  class="form-control" />
-            <span asp-validation-for="Street" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="AptNo"></label>
-            <input asp-for="AptNo" class="form-control" />
-            <span asp-validation-for="AptNo" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="City"></label>
-            <input asp-for="City" type="text" class="form-control" />
-            <span asp-validation-for="City" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="State"></label>
-            <input asp-for="State" type="text" class="form-control" />
-            <span asp-validation-for="State" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="ZipCode"></label>
-            <input asp-for="ZipCode" type="text" class="form-control" />
-            <span asp-validation-for="ZipCode" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary" asp-action="Pay">Pay</button>
-
-    </form>
+    <h3><a asp-action="CreatItem" class="btn btn-sm btn-secondary">Create</a></h3>
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Street</th>
+                <th>Apt_No</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZipCode</th>
+                <th>Update Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No Model Data</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var p in Model)
+                {
+                <tr>
+                    <td>@p.Street</td>
+                    <td>@p.AptNo</td>
+                    <td>@p.City</td>
+                    <td>@p.State</td>
+                    <td>@p.ZipCode</td>
+                    <td>
+                        <form asp-action="UpdateAddresss" method="post" asp-route-PaymentAddressId="@p.PaymentAddressId">
+                            <button>Update Address</button>
+                        </form>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>
 
  

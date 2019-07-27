@@ -40,7 +40,7 @@ namespace ASPSOFSports.Controllers
         {
             ViewData["Message"] = "Payment Details.";
 
-            return View();
+            return View(db_context.PaymentAddress.Include("UserInfo").Where(o => o.UserInfoId  == 1));
         }
 
         public IActionResult PurchaseHis()
@@ -61,6 +61,14 @@ namespace ASPSOFSports.Controllers
            
         }
         [HttpPost]
+        public IActionResult UpdateAddresss(int PaymentAddressId)
+        {
+            ViewData["Message"] = "Update Address."; 
+            return View(db_context.PaymentAddress.Include("UserInfo").Where(o => o.PaymentAddressId == PaymentAddressId));
+
+        }
+        
+        [HttpPost]
         public IActionResult AddItem(Items Item)
         {
              
@@ -78,13 +86,25 @@ namespace ASPSOFSports.Controllers
         {
             PayAddress.UserInfoId = 1;
             if (ModelState.IsValid)
-            {
-                db_context.PaymentAddress.Add(PayAddress);
-                foreach (PurchaseHistory ph in db_context.PurchaseHistory.Where(o => o.UserInfoId == 1 && o.IsPurchased == false))
+            {if (db_context.PaymentAddress.Where(o => o.PaymentAddressId == PayAddress.PaymentAddressId).Count() > 0)
                 {
-                    ph.IsPurchased = true;
+                    PaymentAddress pa = db_context.PaymentAddress.Where(o => o.PaymentAddressId == PayAddress.PaymentAddressId).FirstOrDefault();
+                    pa = PayAddress;
+                    foreach (PurchaseHistory ph in db_context.PurchaseHistory.Where(o => o.UserInfoId == 1 && o.IsPurchased == false))
+                    {
+                        ph.IsPurchased = true;
+                    }
+                    db_context.SaveChanges();
                 }
-                db_context.SaveChanges(); 
+                else
+                {
+                    db_context.PaymentAddress.Add(PayAddress);
+                    foreach (PurchaseHistory ph in db_context.PurchaseHistory.Where(o => o.UserInfoId == 1 && o.IsPurchased == false))
+                    {
+                        ph.IsPurchased = true;
+                    }
+                    db_context.SaveChanges();
+                }
                  return RedirectToAction("PurchaseHis"); 
             }
             else
