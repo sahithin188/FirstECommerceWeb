@@ -15,12 +15,10 @@ namespace ASPSOFSports.Controllers
     public class HomeController : Controller
     {
         public SOF586SportsContext db_context;
-        public IConfiguration Configuration { get; }
-        public string connectionString;
+        public IConfiguration Configuration { get; } 
         public HomeController(IConfiguration configuration)
         {
-            Configuration = configuration;
-            connectionString = Configuration.GetConnectionString("SOFSports");
+            Configuration = configuration; 
             db_context = new SOF586SportsContext(Configuration);
         }
         public IActionResult Shopping()
