@@ -53,14 +53,37 @@ namespace ASPSOFSports.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+       
+        public IActionResult CreatItem()
+        {
+            ViewData["Message"] = "Create Item.";
+            return View();
+           
+        }
+        [HttpPost]
+        public IActionResult AddItem(Items Item)
+        {
+             
+            if (ModelState.IsValid)
+            {
+                db_context.Items.Add(Item); 
+                db_context.SaveChanges();
+                return RedirectToAction("Shopping");
+            }
+            else
+                return View();
+        }
         [HttpPost]
         public IActionResult Pay(PaymentAddress PayAddress)
         {
+            PayAddress.UserInfoId = 1;
             if (ModelState.IsValid)
             {
                 db_context.PaymentAddress.Add(PayAddress);
-                db_context.PurchaseHistory.Where(o=>o.UserInfoId==1 && o.IsPurchased==false).FirstOrDefault().IsPurchased=true;
+                foreach (PurchaseHistory ph in db_context.PurchaseHistory.Where(o => o.UserInfoId == 1 && o.IsPurchased == false))
+                {
+                    ph.IsPurchased = true;
+                }
                 db_context.SaveChanges(); 
                  return RedirectToAction("PurchaseHis"); 
             }
@@ -98,14 +121,14 @@ namespace ASPSOFSports.Controllers
                 return View();
         }
         [HttpPost]
-        public IActionResult DeleteFromCart(PurchaseHistory PhItems)
+        public IActionResult DeleteFromCart(int PurchaseHistoryId)
         {
 
             if (ModelState.IsValid)
             {
-                if (db_context.PurchaseHistory.Where(o => o.PurchaseHistoryId == PhItems.PurchaseHistoryId && o.UserInfoId == 1 && o.IsPurchased == false).Count() != 0)
+                if (db_context.PurchaseHistory.Where(o => o.PurchaseHistoryId == PurchaseHistoryId && o.UserInfoId == 1 && o.IsPurchased == false).Count() != 0)
                 {
-                    PurchaseHistory ph = db_context.PurchaseHistory.Where(o => o.ItemsId == PhItems.ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).FirstOrDefault();
+                    PurchaseHistory ph = db_context.PurchaseHistory.Where(o => o.PurchaseHistoryId == PurchaseHistoryId && o.UserInfoId == 1 && o.IsPurchased == false).FirstOrDefault();
                     db_context.PurchaseHistory.Remove(ph);
                     db_context.SaveChanges();
                 }
@@ -115,11 +138,7 @@ namespace ASPSOFSports.Controllers
             }
             else
                 return View();
-        }
-            public IActionResult NavigatetoPayment()
-            {
-              return RedirectToAction("Payment");
-             }
+        } 
         }
 
 } 

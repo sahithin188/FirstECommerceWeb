@@ -33,25 +33,33 @@
             {
                 @foreach (var p in Model)
                 { 
-        <tr>
-            <td>@p.PurchaseHistoryId</td>
-            <td>@p.Items.Name</td>
-            <td>@p.Items.Price</td>
-            <td>@p.Items.Description</td>
-            <td>@p.Quantity</td>
-            <td><a asp-action="DeletefromCart" asp-route-PurchaseHistoryId="@p.PurchaseHistoryId">Delete From Cart</a></td>
-            @*<td>
-            <form asp-action="Delete" method="post" asp-route-id="@p.ItemsId">
-                <button>Delete</button>
+                <tr>
+                    <td>@p.PurchaseHistoryId</td>
+                    <td>@p.Items.Name</td>
+                    <td>@p.Items.Price</td>
+                    <td>@p.Items.Description</td>
+                    <td>@p.Quantity</td>
+                   @* <td><a asp-action="DeleteFromCart" method="post" asp-route-PurchaseHistoryId="@p.PurchaseHistoryId">Delete From Cart</a></td>*@
+                    <td>
+            <form asp-action="DeleteFromCart" method="post" asp-route-PurchaseHistoryId ="@p.PurchaseHistoryId">
+                <button>Delete from Cart</button>
             </form>
-        </td>*@
-        </tr>
+        </td>
+                </tr>
                 }
             }
         </tbody>
     </table>
 </div>
-<div> <form asp-action="NavigatetoPayment" method="post" >
-    <button>Payment</button>
-      </form>
-    </div> 
+<div>
+    <div style="float: left; width: 100px">
+        <form asp-action="Payment" method="post">
+            <button>Payment</button>
+        </form>
+    </div>
+    <div style="float: left; width: 150px">
+        <form asp-action="Shopping" method="post">
+            <button>Continue Shopping</button>
+        </form>
+    </div>
+</div> 

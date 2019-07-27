@@ -18,20 +18,9 @@
     <h2>@title</h2>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <form class="m-1 p-1" method="post">
-        <div class="form-group">
-            <label asp-for="UserInfo.FirstName"></label>
-            <input asp-for="UserInfo.FirstName" type="text" class="form-control" />
-            <span asp-validation-for="UserInfo.FirstName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="UserInfo.LastName"></label>
-            <input asp-for="UserInfo.LastName" type="text" class="form-control" />
-            <span asp-validation-for="UserInfo.LastName" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
+         <div class="form-group">
             <label asp-for="Street"></label>
-            <input asp-for="Street" type="text" class="form-control" />
+            <input asp-for="Street" type="text"  class="form-control" />
             <span asp-validation-for="Street" class="text-danger"></span>
         </div>
         <div class="form-group">
@@ -60,50 +49,4 @@
     </form>
 </div>
 
-@*<div>
-    @model IEnumerable<PaymentAddress>
-    @{
-        Layout = "_Layout"; 
-        ViewData["Title"] = "User Addressess";
-    }
-    <h2>@title</h2>
-    <h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
-    <table class="table table-bordered table-sm table-striped">
-        <thead>
-            <tr>
-                <th>PaymentAddressId</th>
-                <th>Street</th>
-                <th>AptNo</th>
-                <th>City</th>
-                <th>State</th>
-                <th>ZipCode</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model == null)
-            {
-                <tr>
-                    <td colspan="7" class="text-center">No Model Data</td>
-                </tr>
-            }
-            else
-            {
-                @foreach (var p in Model)
-                {
-                    <tr>
-                        <td>@p.ItemsId</td>
-                        <td>@p.Name</td>
-                        <td>@p.Price</td>
-                        <td>@p.Description</td>
-                        <td><a asp-action="AddtoCart" asp-route-id="@p.ItemsId">Add to Cart</a></td>
-                        <td>
-                                <form asp-action="Delete" method="post" asp-route-id="@p.ItemsId">
-                                    <button>Delete</button>
-                                </form>
-                            </td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
-</div>*@ 
+ 
