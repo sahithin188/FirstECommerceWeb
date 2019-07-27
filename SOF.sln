@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29009.5
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFKids", "SOF586Kids\SOFKids.csproj", "{B50B3E95-1B3B-4DD2-B470-54D10C8E0445}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFSports", "SOF586Sports\SOFSports.csproj", "{CE48E071-1D71-44E2-84C9-A42AFB1A2984}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPSOFSports", "ASPSOFSports\ASPSOFSports.csproj", "{D26A1B64-7B11-47B8-AD7C-A23948FACE42}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPSOFKids", "ASPSOFKids\ASPSOFKids.csproj", "{A85EBE22-B538-4D4E-9586-7FDB6CC4A80C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{D26A1B64-7B11-47B8-AD7C-A23948FACE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D26A1B64-7B11-47B8-AD7C-A23948FACE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D26A1B64-7B11-47B8-AD7C-A23948FACE42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A85EBE22-B538-4D4E-9586-7FDB6CC4A80C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A85EBE22-B538-4D4E-9586-7FDB6CC4A80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A85EBE22-B538-4D4E-9586-7FDB6CC4A80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A85EBE22-B538-4D4E-9586-7FDB6CC4A80C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
