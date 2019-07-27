@@ -67,7 +67,8 @@
                 <th>ItemId</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Description</th> 
+                <th>Description</th>
+                <th>Add to Cart</th>
             </tr>
         </thead>
         <tbody>
@@ -81,18 +82,17 @@
             {
                 @foreach (var p in Model)
                 {
-                    <tr>
-                        <td>@p.ItemsId</td>
-                        <td>@p.Name</td>
-                        <td>@p.Price</td>
-                        <td>@p.Description</td> 
-                        <td><a asp-action="AddtoCart" asp-route-id="@p.ItemsId">Add to Cart</a></td>
-                        @*<td>
-                            <form asp-action="Delete" method="post" asp-route-id="@p.ItemsId">
-                                <button>Delete</button>
-                            </form>
-                        </td>*@
-                    </tr>
+                <tr>
+                    <td>@p.ItemsId</td>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                    <td>@p.Description</td> 
+                    <td>
+            <form asp-action="AddtoCart" method="post" asp-route-ItemsId="@p.ItemsId">
+                <button>Add to Cart</button>
+            </form>
+        </td>
+                </tr>
                 }
             }
         </tbody>

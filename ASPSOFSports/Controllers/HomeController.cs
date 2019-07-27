@@ -39,7 +39,7 @@ namespace ASPSOFSports.Controllers
         {
             ViewData["Message"] = "Payment Details.";
 
-            return View(db_context.PaymentAddress.Where(o =>  o.UserInfoId == 1));
+            return View();
         }
 
         public IActionResult PurchaseHis()
@@ -66,16 +66,17 @@ namespace ASPSOFSports.Controllers
             else
                 return View();
         }
-
-        public IActionResult AddtoCart(Items Items)
+        
+        [HttpPost]
+        public IActionResult AddtoCart(int ItemsId)
         {
            
             if (ModelState.IsValid)
             {
-                if (db_context.PurchaseHistory.Where(o => o.ItemsId == Items.ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).Count() == 0)
+                if (db_context.PurchaseHistory.Where(o => o.ItemsId ==  ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).Count() == 0)
                 {
                     PurchaseHistory ph = new PurchaseHistory();
-                    ph.ItemsId = Items.ItemsId;
+                    ph.ItemsId =  ItemsId ;
                     ph.UserInfoId = 1;
                     ph.Quantity = 1;
                     ph.IsPurchased = false;
@@ -84,7 +85,7 @@ namespace ASPSOFSports.Controllers
                 }
                 else
                 {
-                    PurchaseHistory ph = db_context.PurchaseHistory.Where(o => o.ItemsId == Items.ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).FirstOrDefault() ;
+                    PurchaseHistory ph = db_context.PurchaseHistory.Where(o => o.ItemsId == ItemsId && o.UserInfoId == 1 && o.IsPurchased == false).FirstOrDefault() ;
                      ph.Quantity = ph.Quantity+1;
                     db_context.SaveChanges();
                 }
@@ -95,7 +96,7 @@ namespace ASPSOFSports.Controllers
             else
                 return View();
         }
-
+        [HttpPost]
         public IActionResult DeleteFromCart(PurchaseHistory PhItems)
         {
 
@@ -114,7 +115,7 @@ namespace ASPSOFSports.Controllers
             else
                 return View();
         }
-            public IActionResult NavigatetoPayment(PurchaseHistory PhItems)
+            public IActionResult NavigatetoPayment()
             {
               return RedirectToAction("Payment");
              }
