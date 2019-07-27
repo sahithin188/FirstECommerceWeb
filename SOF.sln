@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFSports", "SOF586Sports\S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPSOFSports", "ASPSOFSports\ASPSOFSports.csproj", "{D26A1B64-7B11-47B8-AD7C-A23948FACE42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPCoreSOFKids", "ASPCoreSOFKids\ASPCoreSOFKids.csproj", "{B0D7A22B-2CFE-465F-9EE0-0C09D4434FD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D26A1B64-7B11-47B8-AD7C-A23948FACE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D26A1B64-7B11-47B8-AD7C-A23948FACE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D26A1B64-7B11-47B8-AD7C-A23948FACE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0D7A22B-2CFE-465F-9EE0-0C09D4434FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D7A22B-2CFE-465F-9EE0-0C09D4434FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D7A22B-2CFE-465F-9EE0-0C09D4434FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D7A22B-2CFE-465F-9EE0-0C09D4434FD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
