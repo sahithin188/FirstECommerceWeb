@@ -11,7 +11,7 @@
         ViewData["Title"] = title;
     }
     <h2>@title</h2>
-    <h3><a asp-action="CreatItem" class="btn btn-sm btn-secondary">Create</a></h3>
+    <h3><a asp-action="AddAddress" class="btn btn-sm btn-secondary">Create Address</a></h3>
     <table class="table table-bordered table-sm table-striped">
         <thead>
             <tr>
@@ -21,6 +21,7 @@
                 <th>State</th>
                 <th>ZipCode</th>
                 <th>Update Address</th>
+                <th>Delete Address</th>
             </tr>
         </thead>
         <tbody>
@@ -41,8 +42,13 @@
                     <td>@p.State</td>
                     <td>@p.ZipCode</td>
                     <td>
-                        <form asp-action="UpdateAddresss" method="post" asp-route-PaymentAddressId="@p.PaymentAddressId">
+                        <form asp-action="UpdateAddress" method="post" asp-route-PaymentAddressId="@p.PaymentAddressId">
                             <button>Update Address</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="DeleteAddress" method="post" asp-route-PaymentAddressId="@p.PaymentAddressId">
+                            <button>Delete Address</button>
                         </form>
                     </td>
                 </tr>

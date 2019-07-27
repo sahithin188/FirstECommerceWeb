@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Add address";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    @model PaymentAddress
+    @{
+        Layout = "_Layout";
+        var title = "Add Payment Details ";
+        ViewData["Title"] = title;
+    }
+    <style>
+        .input-validation-error {
+            border-color: red;
+        }
+    </style>
+    <h2>@title</h2>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form class="m-1 p-1" method="post">
+        
+         <div class="form-group">
+            <label asp-for="Street"></label>
+            <input asp-for="Street" type="text" class="form-control" />
+            <span asp-validation-for="Street" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AptNo"></label>
+            <input asp-for="AptNo" class="form-control" />
+            <span asp-validation-for="AptNo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City"></label>
+            <input asp-for="City" type="text" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="State"></label>
+            <input asp-for="State" type="text" class="form-control" />
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ZipCode"></label>
+            <input asp-for="ZipCode" type="text" class="form-control" />
+            <span asp-validation-for="ZipCode" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" asp-action="Pay">Add and Pay</button>
+
+    </form>
+
+</div>

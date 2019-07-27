@@ -61,13 +61,29 @@ namespace ASPSOFSports.Controllers
            
         }
         [HttpPost]
-        public IActionResult UpdateAddresss(int PaymentAddressId)
+        public IActionResult UpdateAddress(int PaymentAddressId)
         {
             ViewData["Message"] = "Update Address."; 
-            return View(db_context.PaymentAddress.Include("UserInfo").Where(o => o.PaymentAddressId == PaymentAddressId));
+            return View(db_context.PaymentAddress.Include("UserInfo").Where(o => o.PaymentAddressId == PaymentAddressId).FirstOrDefault());
 
         }
-        
+        [HttpPost]
+        public IActionResult DeleteAddress(int PaymentAddressId)
+        {
+            ViewData["Message"] = "Delete Address.";
+            PaymentAddress pa = db_context.PaymentAddress.Where(o => o.PaymentAddressId == PaymentAddressId).FirstOrDefault();
+            db_context.PaymentAddress.Remove(pa);
+            db_context.SaveChanges();
+            return RedirectToAction("Payment");
+
+        }
+        public IActionResult AddAddress()
+        {
+            ViewData["Message"] = "Add Address.";
+            return View();
+
+        }
+
         [HttpPost]
         public IActionResult AddItem(Items Item)
         {
@@ -134,7 +150,7 @@ namespace ASPSOFSports.Controllers
                     db_context.SaveChanges();
                 }
 
-                return RedirectToAction("Shopping");
+                return RedirectToAction("Cart");
                 
             }
             else

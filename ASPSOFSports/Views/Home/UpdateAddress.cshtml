@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "UPdate address";
+    ViewData["Title"] = "Update address";
 }
 <h2>@ViewData["Title"]</h2>
 
@@ -17,8 +17,11 @@
     </style>
     <h2>@title</h2>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <form class="m-1 p-1" method="post">
+    <form class="m-1 p-1" method="post"> 
         <div class="form-group">
+            <label asp-for="PaymentAddressId"></label>
+            <input asp-for="PaymentAddressId" type="text" readonly class="form-control" />
+        </div><div class="form-group">
             <label asp-for="Street"></label>
             <input asp-for="Street" type="text" class="form-control" />
             <span asp-validation-for="Street" class="text-danger"></span>
