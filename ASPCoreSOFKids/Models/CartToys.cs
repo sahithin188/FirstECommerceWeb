@@ -11,5 +11,6 @@ namespace ASPCoreSOFKids.Models
         public int? Quantity { get; set; }
 
         public virtual CoustmerDetails Coustmer { get; set; }
+        public virtual Toys Toy { get; set; }
     }
 }

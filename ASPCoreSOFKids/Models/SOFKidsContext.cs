@@ -28,7 +28,7 @@ namespace ASPCoreSOFKids.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-              optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SOFKids"));
+                optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SOFKids"));
             }
         }
 
@@ -39,7 +39,7 @@ namespace ASPCoreSOFKids.Models
             modelBuilder.Entity<CartToys>(entity =>
             {
                 entity.HasKey(e => e.CartToyId)
-                    .HasName("PK__CartToys__8104086D58174544");
+                    .HasName("PK__CartToys__8104086DDDDE42E3");
 
                 entity.Property(e => e.CartToyId).HasColumnName("CartToy_Id");
 
@@ -50,7 +50,12 @@ namespace ASPCoreSOFKids.Models
                 entity.HasOne(d => d.Coustmer)
                     .WithMany(p => p.CartToys)
                     .HasForeignKey(d => d.CoustmerId)
-                    .HasConstraintName("FK__CartToys__Coustm__5CD6CB2B");
+                    .HasConstraintName("FK__CartToys__Coustm__70DDC3D8");
+
+                entity.HasOne(d => d.Toy)
+                    .WithMany(p => p.CartToys)
+                    .HasForeignKey(d => d.ToyId)
+                    .HasConstraintName("FK__CartToys__Toy_Id__6FE99F9F");
             });
 
             modelBuilder.Entity<CoustmerDetails>(entity =>
@@ -118,7 +123,12 @@ namespace ASPCoreSOFKids.Models
                 entity.HasOne(d => d.Coustmer)
                     .WithMany(p => p.PurchaseHistory)
                     .HasForeignKey(d => d.CoustmerId)
-                    .HasConstraintName("FK__PurchaseH__Coust__5AEE82B9");
+                    .HasConstraintName("FK__PurchaseH__Coust__74AE54BC");
+
+                entity.HasOne(d => d.Toy)
+                    .WithMany(p => p.PurchaseHistory)
+                    .HasForeignKey(d => d.ToyId)
+                    .HasConstraintName("FK__PurchaseH__Toy_I__73BA3083");
             });
 
             modelBuilder.Entity<Toys>(entity =>
