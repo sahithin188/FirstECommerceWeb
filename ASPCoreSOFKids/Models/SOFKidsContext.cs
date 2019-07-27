@@ -28,7 +28,7 @@ namespace ASPCoreSOFKids.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-              optionsBuilder.UseSqlServer("SOFKids");
+              optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SOFKids"));
             }
         }
 

@@ -64,6 +64,52 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<div>
+    @model IEnumerable<Toys>
+    @{
+        Layout = "_Layout";
+        var title = "READ Items";
+        ViewData["Title"] = title;
+    }
+    <h2>@title</h2>
+    <h3><a asp-action="CreatItem" class="btn btn-sm btn-secondary">Create</a></h3>
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>ToyId</th>
+                <th>ToyName</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Add to Cart</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No Model Data</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.ToyId</td>
+                        <td>@p.ToyName</td>
+                        <td>@p.Price</td>
+                        <td>@p.Description</td>
+                        <td>
+                            <form asp-action="AddtoCart" method="post" asp-route-ItemsId="@p.ToyId">
+                                <button>Add to Cart</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
 
 <div class="row">
     <div class="col-md-3">
