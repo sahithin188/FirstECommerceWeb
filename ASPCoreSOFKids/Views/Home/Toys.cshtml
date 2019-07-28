@@ -68,11 +68,11 @@
     @model IEnumerable<Toys>
     @{
         Layout = "_Layout";
-        var title = "READ Items";
+        var title = "Toys";
         ViewData["Title"] = title;
     }
     <h2>@title</h2>
-    <h3><a asp-action="CreatItem" class="btn btn-sm btn-secondary">Create</a></h3>
+    <h3><a asp-action="CreatItem" class="btn btn-sm btn-secondary">Create Toy</a></h3>
     <table class="table table-bordered table-sm table-striped">
         <thead>
             <tr>
@@ -95,12 +95,12 @@
                 @foreach (var p in Model)
                 {
                     <tr>
-                        <td>@p.ToyId</td>
+                        <td>@p.ToyId </td>
                         <td>@p.ToyName</td>
                         <td>@p.Price</td>
                         <td>@p.Description</td>
                         <td>
-                            <form asp-action="AddtoCart" method="post" asp-route-ItemsId="@p.ToyId">
+                            <form asp-action="AddtoCart" method="post" asp-route-ToyId="@p.ToyId">
                                 <button>Add to Cart</button>
                             </form>
                         </td>

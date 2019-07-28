@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Cart Items";
+    ViewData["Title"] = "Cart Toys";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
@@ -8,7 +8,7 @@
     @model IEnumerable<CartToys>
     @{
         Layout = "_Layout";
-        var title = "Cart Items";
+        var title = "Toys";
         ViewData["Title"] = title;
     }
     <h2>@title</h2>
@@ -53,12 +53,12 @@
 </div>
 <div>
     <div style="float: left; width: 100px">
-        <form asp-action="Payment" method="post">
-            <button>Payment</button>
+        <form asp-action="Purchase" method="post">
+            <button>Purchase</button>
         </form>
     </div>
     <div style="float: left; width: 150px">
-        <form asp-action="Shopping" method="post">
+        <form asp-action="Toys" method="post">
             <button>Continue Shopping</button>
         </form>
     </div>

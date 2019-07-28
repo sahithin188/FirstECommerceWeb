@@ -1,7 +1,59 @@
 ﻿@{
-    ViewData["Title"] = "Mailing Address";
+    ViewData["Title"] = "Purchase and Mailing Details";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<div>
+    @model IEnumerable<MailingAddress>
+    @{
+        Layout = "_Layout"; 
+    } 
+    <h3><a asp-action="AddAddress" class="btn btn-sm btn-secondary">Create Address</a></h3>
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Street</th>
+                <th>Apt_No</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZipCode</th>
+                <th>Update Address</th>
+                <th>Delete Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No Model Data</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Street</td>
+                        <td>@p.AptNo</td>
+                        <td>@p.City</td>
+                        <td>@p.State</td>
+                        <td>@p.ZipCode</td>
+                        <td>
+                            <form asp-action="UpdateAddress" method="post" asp-route-MailingAddressId="@p.MailingAddressId  ">
+                                <button>Update Address</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-action="DeleteAddress" method="post" asp-route-MailingAddressId="@p.MailingAddressId  ">
+                                <button>Delete Address</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Create Item";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    @model Toys  
+    @{
+        Layout = "_Layout";
+        var title = "Add New Toy";
+        ViewData["Title"] = title;
+    }
+    <style>
+        .input-validation-error {
+            border-color: red;
+        }
+    </style>
+    <h2>@title</h2>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form class="m-1 p-1" method="post">
+        <div class="form-group">
+            <label asp-for="ToyName"></label>
+            <input asp-for="ToyName" type="text" class="form-control" />
+            <span asp-validation-for="ToyName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" type="text" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" asp-action="AddItem">Add Item</button>
+
+    </form>
+</div>
+
+

@@ -103,7 +103,11 @@ namespace ASPSOFSports.Controllers
             {if (db_context.PaymentAddress.Where(o => o.PaymentAddressId == PayAddress.PaymentAddressId).Count() > 0)
                 {
                     PaymentAddress pa = db_context.PaymentAddress.Where(o => o.PaymentAddressId == PayAddress.PaymentAddressId).FirstOrDefault();
-                    pa = PayAddress;
+                    pa.AptNo = PayAddress.AptNo;
+                    pa.Street = PayAddress.Street;
+                    pa.State = PayAddress.State;
+                    pa.City = PayAddress.City;
+                    pa.ZipCode = PayAddress.ZipCode;
                     foreach (PurchaseHistory ph in db_context.PurchaseHistory.Where(o => o.UserInfoId == 1 && o.IsPurchased == false))
                     {
                         ph.IsPurchased = true;

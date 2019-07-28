@@ -27,24 +27,18 @@ namespace ASPCoreSOFKids.Controllers
        
 
         public IActionResult Cart()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+        { 
+            return View(db_context.CartToys.Include("Toy").Where(o =>o.CoustmerId  == 1));
         }
 
         public IActionResult Purchase()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+        { 
+            return View(db_context.MailingAddress.Include("Coustmer").Where(o => o.CoustmerId  == 1));
         }
 
         public IActionResult PurchaseHis()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+        { 
+            return View(db_context.PurchaseHistory.Include("Toy").Where(o =>o.CoustmerId == 1));
         }
 
         public IActionResult Error()
@@ -53,7 +47,7 @@ namespace ASPCoreSOFKids.Controllers
         }
         public IActionResult CreatItem()
         {
-            ViewData["Message"] = "Create Item.";
+            ViewData["Message"] = "Create Toy.";
             return View();
 
         }
@@ -61,7 +55,7 @@ namespace ASPCoreSOFKids.Controllers
         public IActionResult UpdateAddress(int MailingAddressId)
         {
             ViewData["Message"] = "Update Address.";
-            return View(db_context.MailingAddress.Include("CoustmerDetails").Where(o => o.MailingAddressId == MailingAddressId).FirstOrDefault());
+            return View(db_context.MailingAddress.Include("Coustmer").Where(o => o.MailingAddressId == MailingAddressId).FirstOrDefault());
 
         }
         [HttpPost]
@@ -103,7 +97,11 @@ namespace ASPCoreSOFKids.Controllers
                 if (db_context.MailingAddress .Where(o => o.MailingAddressId  == MailAddress.MailingAddressId).Count() > 0)
                 {
                     MailingAddress ma = db_context.MailingAddress.Where(o => o.MailingAddressId == MailAddress.MailingAddressId).FirstOrDefault();
-                    ma = MailAddress;
+                    ma.AptNo = MailAddress.AptNo ;
+                    ma.City = MailAddress.City;
+                    ma.Street  = MailAddress.Street;                                   
+                    ma.State = MailAddress.State ;
+                    ma.ZipCode  = MailAddress.ZipCode ; 
                   
                 }
                 else
@@ -128,15 +126,15 @@ namespace ASPCoreSOFKids.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddtoCart(int ToysId)
+        public IActionResult AddtoCart(int ToyId)
         {
 
             if (ModelState.IsValid)
             {
-                if (db_context.CartToys.Where(o => o.ToyId == ToysId  && o.CoustmerId  == 1 ).Count() == 0)
+                if (db_context.CartToys.Where(o => o.ToyId == ToyId  && o.CoustmerId  == 1 ).Count() == 0)
                 {
                     CartToys ct = new CartToys();
-                    ct.ToyId = ToysId;
+                    ct.ToyId = ToyId;
                     ct.CoustmerId = 1;
                     ct.Quantity = 1; 
                     db_context.CartToys.Add(ct);
@@ -144,7 +142,7 @@ namespace ASPCoreSOFKids.Controllers
                 }
                 else
                 {
-                    CartToys ct = db_context.CartToys.Where(o => o.ToyId == ToysId  && o.CoustmerId == 1 ).FirstOrDefault();
+                    CartToys ct = db_context.CartToys.Where(o => o.ToyId == ToyId  && o.CoustmerId == 1 ).FirstOrDefault();
                     ct.Quantity = ct.Quantity + 1;
                     db_context.SaveChanges();
                 }
