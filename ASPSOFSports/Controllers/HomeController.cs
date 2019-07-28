@@ -82,7 +82,27 @@ namespace ASPSOFSports.Controllers
             return View();
 
         }
+        public IActionResult UpdatePrice(int ItemsId)
+        {
+            ViewData["Message"] = "Update Price.";
+            return View(db_context.Items.Where(o => o.ItemsId  == ItemsId).FirstOrDefault());
 
+        }
+        [HttpPost]
+        public IActionResult UpdateToyPrice(Items  item)
+        {
+
+            if (ModelState.IsValid)
+            {
+                Items  t = db_context.Items.Where(o => o.ItemsId  == item.ItemsId).FirstOrDefault();
+                t.Price = item.Price;
+                t.Description = item.Description;
+                db_context.SaveChanges();
+                return RedirectToAction("Shopping");
+            }
+            else
+                return View("UpdatePrice");
+        }
         [HttpPost]
         public IActionResult AddItem(Items Item)
         {

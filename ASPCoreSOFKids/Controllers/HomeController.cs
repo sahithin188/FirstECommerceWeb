@@ -75,6 +75,12 @@ namespace ASPCoreSOFKids.Controllers
             return View();
 
         }
+        public IActionResult UpdatePrice(int ToyId)
+        {
+            ViewData["Message"] = "Update Price.";
+            return View(db_context.Toys.Where(o=>o.ToyId==ToyId).FirstOrDefault());
+
+        }
 
         [HttpPost]
         public IActionResult AddItem(Toys  Toy)
@@ -87,7 +93,22 @@ namespace ASPCoreSOFKids.Controllers
                 return RedirectToAction("Toys");
             }
             else
-                return View();
+                return View("CreateItem");
+        }
+         [HttpPost]
+        public IActionResult UpdateToyPrice(Toys Toy)
+        {
+
+            if (ModelState.IsValid)
+            {
+                Toys t=db_context.Toys.Where(o=>o.ToyId==Toy.ToyId).FirstOrDefault();
+                t.Price = Toy.Price;
+                t.Description = Toy.Description;
+                db_context.SaveChanges();
+                return RedirectToAction("Toys");
+            }
+            else
+                return View("UpdatePrice");
         }
         [HttpPost]
         public IActionResult Pay(MailingAddress  MailAddress)
@@ -123,7 +144,7 @@ namespace ASPCoreSOFKids.Controllers
                 return RedirectToAction("PurchaseHis");
             }
             else
-                return View();
+                return View("Purchase");
         }
 
         [HttpPost]
@@ -152,7 +173,7 @@ namespace ASPCoreSOFKids.Controllers
 
             }
             else
-                return View();
+                return View("Toys");
         }
         [HttpPost]
         public IActionResult DeleteFromCart(int CartToyId)
@@ -171,7 +192,7 @@ namespace ASPCoreSOFKids.Controllers
 
             }
             else
-                return View();
+                return View("Cart");
         }
     
 }

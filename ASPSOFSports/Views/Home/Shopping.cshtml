@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Sports Goods";
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -56,7 +56,7 @@
     @model IEnumerable<Items>
     @{
         Layout = "_Layout";
-        var title = "READ Items";
+        var title = "Sporting Goods";
         ViewData["Title"] = title;
     }
     <h2>@title</h2>
@@ -86,17 +86,22 @@
             {
                 @foreach (var p in Model)
                 {
-                    <tr>
-                        <td>@p.ItemsId</td>
-                        <td>@p.Name</td>
-                        <td>@p.Price</td>
-                        <td>@p.Description</td>
-                        <td>
-                            <form asp-action="AddtoCart" method="post" asp-route-ItemsId="@p.ItemsId">
-                                <button>Add to Cart</button>
-                            </form>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>@p.ItemsId</td>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                    <td>@p.Description</td>
+                    <td>
+                        <form asp-action="AddtoCart" method="post" asp-route-ItemsId="@p.ItemsId">
+                            <button>Add to Cart</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="UpdatePrice" method="post" asp-route-ItemsId="@p.ItemsId">
+                            <button>Update Price</button>
+                        </form>
+                    </td>
+                </tr>
                 }
             }
         </tbody>

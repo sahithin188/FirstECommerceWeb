@@ -85,6 +85,7 @@
                 <th>Price</th>
                 <th>Description</th>
                 <th>Add to Cart</th>
+                <th>Update Price</th>
             </tr>
         </thead>
         <tbody>
@@ -106,8 +107,13 @@
                         <td>
                             <form asp-action="AddtoCart" method="post" asp-route-ToyId="@p.ToyId">
                                 <button>Add to Cart</button>
-                            </form>
+                            </form> 
                         </td>
+                        <td>
+                            <form asp-action="UpdatePrice" method="post" asp-route-ToyId="@p.ToyId">
+                                <button>Update Price</button>
+                            </form>
+                            </td> 
                     </tr>
                 }
             }
