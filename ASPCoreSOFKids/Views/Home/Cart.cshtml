@@ -1,6 +1,65 @@
 ﻿@{
-    ViewData["Title"] = "Cart";
+    ViewData["Title"] = "Cart Items";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
+<div>
+    @model IEnumerable<CartToys>
+    @{
+        Layout = "_Layout";
+        var title = "Cart Items";
+        ViewData["Title"] = title;
+    }
+    <h2>@title</h2>
+    <table class="table table-bordered table-sm table-striped">
+        <thead>
+            <tr>
+                <th>PurchaseHistoryId</th>
+                <th>ItemsName</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null)
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No Model Data</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.CartToyId</td>
+                        <td>@p.Toy.ToyName</td>
+                        <td>@p.Toy.Price</td>
+                        <td>@p.Toy.Description</td>
+                        <td>@p.Quantity</td>
+                        <td><a asp-action="DeleteFromCart" method="post" asp-route-CartToyId="@p.CartToyId">Delete From Cart</a></td>
+                        <td>
+                            <form asp-action="DeleteFromCart" method="post" asp-route-CartToyId="@p.CartToyId">
+                                <button>Delete from Cart</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <div style="float: left; width: 100px">
+        <form asp-action="Payment" method="post">
+            <button>Payment</button>
+        </form>
+    </div>
+    <div style="float: left; width: 150px">
+        <form asp-action="Shopping" method="post">
+            <button>Continue Shopping</button>
+        </form>
+    </div>
+</div>
