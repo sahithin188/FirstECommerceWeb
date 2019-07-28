@@ -21,10 +21,11 @@ namespace ASPSOFSports.Controllers
             Configuration = configuration; 
             db_context = new SOF586SportsContext(Configuration);
         }
-        public IActionResult Shopping()
-        { 
-             return View(db_context.Items);
-            //return View();
+        public IActionResult Shopping(string searching)
+        {
+            
+            return View(db_context.Items.Where(o => o.Name.Contains(searching) || searching == null).ToList()); 
+
         }
 
         public IActionResult Cart()

@@ -60,6 +60,10 @@
         ViewData["Title"] = title;
     }
     <h2>@title</h2>
+    @using (Html.BeginForm("Shopping", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("searching")<input type="submit" value="search" />
+    }
     <h3><a asp-action="CreatItem" class="btn btn-sm btn-secondary">Create</a></h3>
     <table class="table table-bordered table-sm table-striped">
         <thead>
@@ -82,17 +86,17 @@
             {
                 @foreach (var p in Model)
                 {
-                <tr>
-                    <td>@p.ItemsId</td>
-                    <td>@p.Name</td>
-                    <td>@p.Price</td>
-                    <td>@p.Description</td> 
-                    <td>
-            <form asp-action="AddtoCart" method="post" asp-route-ItemsId="@p.ItemsId">
-                <button>Add to Cart</button>
-            </form>
-        </td>
-                </tr>
+                    <tr>
+                        <td>@p.ItemsId</td>
+                        <td>@p.Name</td>
+                        <td>@p.Price</td>
+                        <td>@p.Description</td>
+                        <td>
+                            <form asp-action="AddtoCart" method="post" asp-route-ItemsId="@p.ItemsId">
+                                <button>Add to Cart</button>
+                            </form>
+                        </td>
+                    </tr>
                 }
             }
         </tbody>

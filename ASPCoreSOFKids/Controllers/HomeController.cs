@@ -19,10 +19,11 @@ namespace ASPCoreSOFKids.Controllers
             Configuration = configuration; 
             db_context = new SOFKidsContext(Configuration);
         }
-        public IActionResult Toys()
+        public IActionResult Toys(string searching)
         {
-            return View(db_context.Toys);
-           
+           // return View(db_context.Toys);
+            return View(db_context.Toys.Where(o => o.ToyName.Contains(searching)|| searching == null ).ToList());
+
         }
        
 

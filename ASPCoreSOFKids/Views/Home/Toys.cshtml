@@ -72,6 +72,10 @@
         ViewData["Title"] = title;
     }
     <h2>@title</h2>
+     @using (Html.BeginForm("Toys", "Home", FormMethod.Get))
+     {
+         @Html.TextBox("searching")<input type="submit" value="search"/>
+     }
     <h3><a asp-action="CreatItem" class="btn btn-sm btn-secondary">Create Toy</a></h3>
     <table class="table table-bordered table-sm table-striped">
         <thead>
