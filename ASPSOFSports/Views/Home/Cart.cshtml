@@ -39,8 +39,7 @@
                     <td>@p.Items.Price</td>
                     <td>@p.Items.Description</td>
                     <td>@p.Quantity</td>
-                   @* <td><a asp-action="DeleteFromCart" method="post" asp-route-PurchaseHistoryId="@p.PurchaseHistoryId">Delete From Cart</a></td>*@
-                    <td>
+                     <td>
             <form asp-action="DeleteFromCart" method="post" asp-route-PurchaseHistoryId ="@p.PurchaseHistoryId">
                 <button>Delete from Cart</button>
             </form>

@@ -20,6 +20,7 @@
                 <th>Price</th>
                 <th>Description</th>
                 <th>Quantity</th>
+                <th>Delete From Cart</th>
             </tr>
         </thead>
         <tbody>
@@ -39,8 +40,7 @@
                         <td>@p.Toy.Price</td>
                         <td>@p.Toy.Description</td>
                         <td>@p.Quantity</td>
-                        <td><a asp-action="DeleteFromCart" method="post" asp-route-CartToyId="@p.CartToyId">Delete From Cart</a></td>
-                        <td>
+                         <td>
                             <form asp-action="DeleteFromCart" method="post" asp-route-CartToyId="@p.CartToyId">
                                 <button>Delete from Cart</button>
                             </form>
