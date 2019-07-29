@@ -149,7 +149,12 @@ namespace ASPSOFSports.Controllers
             else
                 return View();
         }
-        
+        [HttpPost]
+        public IActionResult GenPDF(PurchaseHistory Phis)
+        {
+            PDFGenerator.ImportEntityList(db_context.PurchaseHistory.ToList()); 
+            return RedirectToAction("PurchaseHis");
+        }
         [HttpPost]
         public IActionResult AddtoCart(int ItemsId)
         {

@@ -12,6 +12,7 @@
         ViewData["Title"] = title;
     }
     <h2>@title</h2>
+    <button type="submit" class="btn btn-primary" asp-action="GenPDF">Creat Report</button>
     <table class="table table-bordered table-sm table-striped">
         <thead>
             <tr>
@@ -33,13 +34,13 @@
             {
                 @foreach (var p in Model)
                 {
-        <tr>
-            <td>@p.PurchaseHistoryId</td>
-            <td>@p.Items.Name</td>
-            <td>@p.Items.Price</td>
-            <td>@p.Items.Description</td>
-            <td>@p.Quantity</td> 
-        </tr>
+                    <tr>
+                        <td>@p.PurchaseHistoryId</td>
+                        <td>@p.Items.Name</td>
+                        <td>@p.Items.Price</td>
+                        <td>@p.Items.Description</td>
+                        <td>@p.Quantity</td>
+                    </tr>
                 }
             }
         </tbody>
